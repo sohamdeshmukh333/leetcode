@@ -5,7 +5,10 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        hashS, hashT = {}, {}
+        if len(s) != len(t):
+            return False
+        hashS, hashT = {},{}
+
         for c in s:
             if not c in hashS:
                 hashS[c] = 1
@@ -16,5 +19,12 @@ class Solution(object):
                 hashT[c] = 1
             else:
                 hashT[c] += 1
-        
+
         return hashS == hashT
+
+
+    
+
+        
+
+    
