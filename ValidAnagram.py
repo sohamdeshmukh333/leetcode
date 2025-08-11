@@ -1,18 +1,20 @@
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        return sorted(s) == sorted(t)
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        hashS, hashT = {}, {}
+        for c in s:
+            if not c in hashS:
+                hashS[c] = 1
+            else:
+                hashS[c] += 1
+        for c in t:
+            if not c in hashT:
+                hashT[c] = 1
+            else:
+                hashT[c] += 1
         
-        if len(s) != len(t):
-            return False
-        
-        countS, countT = {}, {}
-
-        for c in range(len(s)):
-            countS[s[c]] = 1 + countS.get(s[c],0)
-            countT[t[c]] = 1 + countT.get(t[c],0)
-
-        for i in countS:
-            if countS[i] != countT.get(i,0):
-                return False
-        return True
-        
+        return hashS == hashT
